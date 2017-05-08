@@ -1,0 +1,4 @@
+public/*.js
+node_modules/*
+api/*.js
+webpack.*.js
