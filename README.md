@@ -8,11 +8,13 @@ App consuming data from 3 different json endpoints and displaying the content on
 
 Inside the `api/` folder:
 
-* Run `npm install`
+* `npm install`
 
-### Run the local app
+### Install the local app
 
-TODO
+Inside the `/` folder:
+
+* `npm install`
 
 ## Run the app
 
@@ -20,9 +22,28 @@ TODO
 
 Inside the `api/` folder
 
-* Run `node index.js`
+* `node index.js`
 
 ### Run the local app
 
-TODO
+Inside the `/` folder:
+
+#### In Normal Mode
+
+* `npm start`
+
+#### In Debug Mode (Useful for development)
+
+* `DEBUG=true npm start`
+
+## Helpful Commands
+
+### Validate JS
+
+* `npm run lint`
+    
+### Run tests
+    
+* `npm run test:feature`    
+* `npm run test:unit`
 
