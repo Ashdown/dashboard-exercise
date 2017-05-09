@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
-import reducer from "../../src/reducers/userlist";
-import * as types from "../../src/constants/ActionTypes";
+import reducer from "../../../src/reducers/userlist";
+import * as types from "../../../src/constants/ActionTypes";
 
 describe("userlist reducer", () => {
     it("should return the initial state", () => {

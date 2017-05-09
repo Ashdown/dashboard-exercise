@@ -2,7 +2,7 @@
 
 import React from "react";
 import { shallow } from "enzyme";
-import Dashboard from "../../src/containers/Dashboard";
+import Dashboard from "../../../src/containers/Dashboard";
 
 function setup() {
     const enzymeWrapper = shallow(<Dashboard />);

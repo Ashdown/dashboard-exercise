@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {combineReducers} from "redux";
 import {createStore, renderDevTools} from "../store_enhancers/devTools";
 import * as reducers from "../reducers";
+import UserInformation from "../components/UserInformation";
+import {Provider} from "react-redux";
 
 const reducer = combineReducers(reducers);
 const store = createStore(
@@ -18,6 +20,9 @@ export default class Dashboard extends Component {
             <div className="dashboard">
                 <h2 className="dashboard-title">Dashboard</h2>
                 <p>This is the dashboard</p>
+                <Provider store={store}>
+                    {() => <UserInformation /> }
+                </Provider>
                 {renderDevTools(store)}
             </div>
         );

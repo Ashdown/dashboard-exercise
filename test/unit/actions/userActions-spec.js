@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
-import * as actions from "../../src/actions/userActions";
-import * as types from "../../src/constants/ActionTypes";
+import * as actions from "../../../src/actions/userActions";
+import * as types from "../../../src/constants/ActionTypes";
 
 describe("actions", () => {
     it("should create an action to add sensor data", () => {
