@@ -3,8 +3,8 @@
 import React from "react";
 import {shallow} from "enzyme";
 import {UserInformation} from "../../../src/components/UserInformation";
-import nock from 'nock';
 import configureStore from 'redux-mock-store';
+import fetchMock from 'fetch-mock'
 
 import * as userActions from "../../../src/actions/userActions";
 
@@ -28,10 +28,6 @@ function setup() {
 
 describe("UserInformation Component", () => {
 
-    afterEach(() => {
-        nock.cleanAll()
-    });
-
     it("should render self", () => {
         const {enzymeWrapper, props} = setup();
         expect(enzymeWrapper.find(".user-information").hasClass("user-information")).toBe(true);
@@ -39,28 +35,34 @@ describe("UserInformation Component", () => {
 
     it("should request information data", () => {
 
-        const store = mockStore({});
+        const mockDispatch = jest.fn();
+        const component = new UserInformation({dispatch: mockDispatch, userlist: {}});
 
-        nock('http://localhost:3001').get('/users')
-                .reply(200, {body: [
-                    {
-                        "id": 1,
-                        "givenName": "Peter",
-                        "familyName": "Capaldi"
-                    },
-                    {
-                        "id": 2,
-                        "givenName": "Matt",
-                        "familyName": "Smith"
-                    }]});
+        fetchMock.get('http://localhost:3001/users', [{
+                "id": 1,
+                "givenName": "Peter",
+                "familyName": "Capaldi"
+            },
+            {
+                "id": 2,
+                "givenName": "Matt",
+                "familyName": "Smith"
+            }]);
 
-        var component = new UserInformation({dispatch: {}, userlist: {}});
-        component.fetchData();
 
-        const actions = store.getActions();
-        const expectedPayload = { type: 'ADD_USER_DATA' };
-        // expect(actions).toEqual([expectedPayload]);
-
+        return component.fetchData().then(data => {
+                expect(mockDispatch).toBeCalledWith(userActions.addUserData({
+                    "id": 1,
+                    "givenName": "Peter",
+                    "familyName": "Capaldi"
+                },));
+                expect(mockDispatch).toBeCalledWith(userActions.addUserData({
+                    "id": 2,
+                    "givenName": "Matt",
+                    "familyName": "Smith"
+                },));
+            }
+        );
 
     })
 });

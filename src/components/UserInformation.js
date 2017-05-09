@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from "../actions/userActions";
-import fetch from "isomorphic-fetch";
 
 export class UserInformation extends Component {
 
@@ -13,12 +12,10 @@ export class UserInformation extends Component {
 
     fetchData()  {
 
-        console.log('fetch');
-
         const { dispatch } = this.props;
         const actions = bindActionCreators(userActions, dispatch);
 
-        fetch("http://localhost:3001/users")
+        return fetch("http://localhost:3001/users")
             .then((response) => {
 
                 if(!response.ok) {
@@ -30,13 +27,10 @@ export class UserInformation extends Component {
 
                     throw Error(response.statusText);
                 }
-                console.log('response', response);
                 return response.json();
             })
             .then((data) => {
-            console.log('data', data);
                 for (let userData of data) {
-                    console.log('calling disaptch');
                     dispatch(actions.addUserData(userData));
                 }
             }).catch((error) => {
