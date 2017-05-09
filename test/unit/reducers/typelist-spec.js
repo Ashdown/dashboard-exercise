@@ -17,16 +17,19 @@ describe("typelist reducer", () => {
             reducer(undefined, {
                 type: types.ADD_TYPE_DATA,
                 data: {
-                    id: 1,
-                    documentsCount: 123,
-                    name: "Lorem Ipsum"
+                    "creationDateTime": "2016-08-17T13:07:19.800Z",
+                    "id": "article",
+                    "documentsCount": 5,
+                    "description": "Articles about the programme",
+                    "name": "Article Page",
+                    "colourId": "golden"
                 }
             })
         ).toEqual({
             "types": [{
-                id: 1,
-                count: 123,
-                name: "Lorem Ipsum"
+                id: "article",
+                count: 5,
+                name: "Article Page"
             }]
         });
     });
