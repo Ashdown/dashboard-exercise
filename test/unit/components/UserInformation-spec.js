@@ -33,7 +33,7 @@ describe("UserInformation Component", () => {
         expect(enzymeWrapper.find(".user-information").hasClass("user-information")).toBe(true);
     });
 
-    it("should request information data", () => {
+    it("should call dispatch with correct user actions", () => {
 
         const mockDispatch = jest.fn();
         const component = new UserInformation({dispatch: mockDispatch, userlist: {}});
@@ -61,9 +61,26 @@ describe("UserInformation Component", () => {
                     "givenName": "Matt",
                     "familyName": "Smith"
                 },));
+                fetchMock.restore();
             }
         );
 
-    })
+    });
+
+    it("should try 3 times to make another request if the first one fails", () => {
+
+        const mockDispatch = jest.fn();
+        const component = new UserInformation({dispatch: mockDispatch, userlist: {}});
+
+        fetchMock.get('http://localhost:3001/users', 500);
+
+        return component.fetchData().then(data => {
+            expect(fetchMock.calls().matched.length).toBe(3);
+            fetchMock.restore();
+            }
+        );
+
+    });
+
 });
 

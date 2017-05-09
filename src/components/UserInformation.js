@@ -17,10 +17,9 @@ export class UserInformation extends Component {
 
         return fetch("http://localhost:3001/users")
             .then((response) => {
-
                 if(!response.ok) {
 
-                    if(this.requestCount++ <= 3) {
+                    if(++this.requestCount <= 3) {
                         this.fetchData();
                         throw Error('Users List failed. Trying again');
                     }
@@ -33,8 +32,10 @@ export class UserInformation extends Component {
                 for (let userData of data) {
                     dispatch(actions.addUserData(userData));
                 }
+
             }).catch((error) => {
                 console.log('error', error);
+
         });
     }
 
