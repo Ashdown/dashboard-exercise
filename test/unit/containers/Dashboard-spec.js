@@ -17,7 +17,6 @@ describe("Dashboard Component", () => {
     it("should render self and subcomponents", () => {
         const { enzymeWrapper } = setup();
         expect(enzymeWrapper.find(".dashboard").hasClass("dashboard")).toBe(true);
-        expect(enzymeWrapper.find(".dashboard-title").text()).toBe("Dashboard");
     });
 });
 

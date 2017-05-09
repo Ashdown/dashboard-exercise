@@ -2,11 +2,11 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import {UserInformation} from "../../../src/components/UserInformation";
+import {ProgrammeInformation} from "../../../src/components/ProgrammeInformation";
 import fetchMock from 'fetch-mock'
 import * as userActions from "../../../src/actions/userActions";
 
-describe("UserInformation Component", () => {
+describe("ProgrammeInformation Component", () => {
 
     describe('render', () => {
 
@@ -18,7 +18,7 @@ describe("UserInformation Component", () => {
                 }
             };
 
-            const enzymeWrapper = shallow(<UserInformation {...props}/>);
+            const enzymeWrapper = shallow(<ProgrammeInformation {...props}/>);
 
             return {
                 props,
@@ -28,14 +28,19 @@ describe("UserInformation Component", () => {
 
         it("should render self", () => {
             const {enzymeWrapper, props} = setup();
-            expect(enzymeWrapper.find(".user-information").hasClass("user-information")).toBe(true);
+            expect(enzymeWrapper.find(".programme-information").hasClass("programme-information")).toBe(true);
+        });
+
+        it("should render title", () => {
+            const {enzymeWrapper, props} = setup();
+            expect(enzymeWrapper.find(".programme-title").text()).toBe("Programmes - Dr Who");
         });
     })
 
     describe('fetchMock', () => {
 
         const mockDispatch = jest.fn();
-        const component = new UserInformation({dispatch: mockDispatch, userlist: {}});
+        const component = new ProgrammeInformation({dispatch: mockDispatch, userlist: {}});
 
         afterEach(() => {
             fetchMock.restore();

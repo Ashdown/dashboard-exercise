@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {combineReducers} from "redux";
 import {createStore, renderDevTools} from "../store_enhancers/devTools";
 import * as reducers from "../reducers";
-import UserInformation from "../components/UserInformation";
+import ProgrammeInformation from "../components/ProgrammeInformation";
 import TypeList from "../components/TypeList";
 import FileList from "../components/FileList";
 import SearchBar from "../components/SearchBar";
@@ -20,10 +20,8 @@ export default class Dashboard extends Component {
         return (
             <div className="dashboard">
                 <SearchBar />
-                <h2 className="dashboard-title">Dashboard</h2>
-                <p>This is the dashboard</p>
                 <Provider store={store}>
-                    {() => <UserInformation />}
+                    {() => <ProgrammeInformation />}
                 </Provider>
                 <Provider store={store}>
                     {() => <TypeList />}

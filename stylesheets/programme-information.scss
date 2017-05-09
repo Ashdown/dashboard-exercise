@@ -1,0 +1,25 @@
+.programme-information {
+
+  overflow: hidden;
+  min-height: 98px;
+
+  .programme-title,
+  .description{
+    color: $black;
+  }
+  .programme-title {
+    margin-top: 42px;
+    font-size: 18px;
+  }
+  .description {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+}
+
+@include respond-to(tablet) {
+  .programme-information {
+    padding-left: 90px;
+    background: transparent url('/static/folder.png') no-repeat left 42px;
+  }
+}

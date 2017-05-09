@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from "../actions/userActions";
 
-export class UserInformation extends Component {
+export class ProgrammeInformation extends Component {
 
     constructor(props) {
         super(props);
@@ -48,10 +48,13 @@ export class UserInformation extends Component {
         const { userlist: { users } } = this.props;
 
         return (
-            <div className="user-information">User Count {users.length}</div>
+            <div className="programme-information">
+                <h2 className="programme-title">Programmes - Dr Who</h2>
+                <p className="description">This project has {users.length} users</p>
+            </div>
         );
     }
 
 }
 
-export default connect(state => ({userlist: state.userlist}))(UserInformation);
+export default connect(state => ({userlist: state.userlist}))(ProgrammeInformation);
