@@ -2,16 +2,14 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as typeActions from "../actions/typeActions";
-import fetch from "isomorphic-fetch";
 
 export class TypeList extends Component {
 
-    componentDidMount() {
-
+    fetchData() {
         const { dispatch } = this.props;
         const actions = bindActionCreators(typeActions, dispatch);
 
-        fetch("http://localhost:3001/types")
+        return fetch("http://localhost:3001/types")
             .then((response) => {
                 if(!response.ok) {
                     throw Error(response.statusText);
@@ -23,9 +21,12 @@ export class TypeList extends Component {
                     dispatch(actions.addTypeData(typeData));
                 }
             }).catch((error) => {
-                console.log('error', error);
-            });
+            console.log('error', error);
+        });
+    }
 
+    componentDidMount() {
+        this.fetchData();
     }
 
     render() {

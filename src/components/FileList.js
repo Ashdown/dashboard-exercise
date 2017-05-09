@@ -2,16 +2,14 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as fileActions from "../actions/fileActions";
-import fetch from "isomorphic-fetch";
 
 export class FileList extends Component {
 
-    componentDidMount() {
-
+    fetchData() {
         const { dispatch } = this.props;
         const actions = bindActionCreators(fileActions, dispatch);
 
-        fetch("http://localhost:3001/files")
+        return fetch("http://localhost:3001/files")
             .then((response) => {
                 if(!response.ok) {
                     throw Error(response.statusText);
@@ -23,8 +21,12 @@ export class FileList extends Component {
                     dispatch(actions.addFileData(fileData));
                 }
             }).catch((error) => {
-                console.log('error', error);
-            });
+            console.log('error', error);
+        });
+    }
+
+    componentDidMount() {
+        this.fetchData();
     }
 
     render() {
