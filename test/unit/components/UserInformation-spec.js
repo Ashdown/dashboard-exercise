@@ -2,11 +2,15 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import UserInformation from "../../../src/components/UserInformation";
+import {UserInformation} from "../../../src/components/UserInformation";
 
 function setup() {
 
-    const props = {};
+    const props = {
+        userlist: {
+            users: []
+        }
+    };
 
     const enzymeWrapper = shallow(<UserInformation {...props}/>);
 
@@ -20,7 +24,7 @@ describe("UserInformation Component", () => {
 
     it("should render self", () => {
         const {enzymeWrapper, props} = setup();
-        // expect(enzymeWrapper.find(".user-information").hasClass("user-information")).toBe(true);
+        expect(enzymeWrapper.find(".user-information").hasClass("user-information")).toBe(true);
     });
 });
 

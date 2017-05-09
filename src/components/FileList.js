@@ -4,32 +4,32 @@ import { bindActionCreators } from 'redux';
 import * as fileActions from "../actions/fileActions";
 import fetch from "isomorphic-fetch";
 
-@connect(state => ({
-    filelist: state.filelist
-}))
-
-export default class FileList extends Component {
+export class FileList extends Component {
 
     componentDidMount() {
 
-        const { filelist: { sensors }, dispatch } = this.props;
+        const { dispatch } = this.props;
         const actions = bindActionCreators(fileActions, dispatch);
 
         fetch("http://localhost:3001/files")
-            .then(function (response) {
+            .then((response) => {
+                if(!response.ok) {
+                    throw Error(response.statusText);
+                }
                 return response.json();
             })
-            .then(function (data) {
+            .then((data) => {
                 for (let fileData of data) {
                     dispatch(actions.addFileData(fileData));
                 }
+            }).catch((error) => {
+                console.log('error', error);
             });
     }
 
     render() {
 
-        const { filelist: { files }, dispatch } = this.props;
-        const actions = bindActionCreators(fileActions, dispatch);
+        const { filelist: { files } } = this.props;
 
         let fileItems = [];
 
@@ -43,3 +43,5 @@ export default class FileList extends Component {
     }
 
 }
+
+export default connect(state => ({filelist: state.filelist}))(FileList)

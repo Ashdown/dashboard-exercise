@@ -2,11 +2,15 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import FileList from "../../../src/components/FileList";
+import { FileList } from "../../../src/components/FileList";
 
 function setup() {
 
-    const props = {};
+    const props = {
+        filelist: {
+            files: []
+        }
+    };
 
     const enzymeWrapper = shallow(<FileList {...props}/>);
 
@@ -19,8 +23,8 @@ function setup() {
 describe("TypeList Component", () => {
 
     it("should render self", () => {
-        const {enzymeWrapper, props} = setup();
-        // expect(enzymeWrapper.find(".file-list").hasClass("file-list")).toBe(true);
+        const { enzymeWrapper, props } = setup();
+        expect(enzymeWrapper.find(".file-list").hasClass("file-list")).toBe(true);
     });
 });
 
