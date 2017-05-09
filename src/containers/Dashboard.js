@@ -4,6 +4,7 @@ import {createStore, renderDevTools} from "../store_enhancers/devTools";
 import * as reducers from "../reducers";
 import UserInformation from "../components/UserInformation";
 import TypeList from "../components/TypeList";
+import FileList from "../components/FileList";
 import {Provider} from "react-redux";
 
 const reducer = combineReducers(reducers);
@@ -24,6 +25,9 @@ export default class Dashboard extends Component {
                 </Provider>
                 <Provider store={store}>
                     {() => <TypeList />}
+                </Provider>
+                <Provider store={store}>
+                    {() => <FileList />}
                 </Provider>
                 {renderDevTools(store)}
             </div>
