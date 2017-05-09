@@ -3,7 +3,7 @@ import {combineReducers} from "redux";
 import {createStore, renderDevTools} from "../store_enhancers/devTools";
 import * as reducers from "../reducers";
 import ProgrammeInformation from "../components/ProgrammeInformation";
-import TypeList from "../components/TypeList";
+import TypeList from "../components/TypePanel";
 import FileList from "../components/FileList";
 import SearchBar from "../components/SearchBar";
 import {Provider} from "react-redux";
@@ -23,12 +23,14 @@ export default class Dashboard extends Component {
                 <Provider store={store}>
                     {() => <ProgrammeInformation />}
                 </Provider>
-                <Provider store={store}>
-                    {() => <TypeList />}
-                </Provider>
-                <Provider store={store}>
-                    {() => <FileList />}
-                </Provider>
+                <div className="main-content">
+                    <Provider store={store}>
+                        {() => <FileList />}
+                    </Provider>
+                    <Provider store={store}>
+                        {() => <TypeList />}
+                    </Provider>
+                </div>
                 {renderDevTools(store)}
             </div>
         );

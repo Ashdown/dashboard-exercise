@@ -1,0 +1,50 @@
+.type-panel {
+
+  .panel-title,
+  .type-item {
+    padding: 0 12px;
+  }
+
+
+  .panel-title {
+    margin-top: 16px;
+    font-size: 18px;
+  }
+
+  .type-list {
+    margin-top: 14px;
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  .type-item {
+    border-top: 1px solid $light-grey;
+    font-size: 14px;
+    color: $text-blue;
+  }
+
+  .type-link {
+    padding: 6px 0 4px 0;
+    display: inline-block;
+    color: $text-blue;
+    text-decoration: none;
+    @include transition(color, 0.2s, ease);
+    &:hover {
+      color: $deep-blue;
+    }
+  }
+
+}
+
+@include respond-to(desktop) {
+  .type-panel {
+    overflow: hidden;
+    margin-left: 16px;
+  }
+}
+
+@include respond-to(desktop-wide) {
+  .type-panel {
+    margin-left: 40px;
+  }
+}

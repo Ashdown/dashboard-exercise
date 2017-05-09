@@ -2,6 +2,11 @@
   margin: -44px auto 0 auto;
   padding: 0 8px;
   position: relative;
+
+  .main-content {
+    overflow: hidden;
+  }
+
 }
 
 @include respond-to(desktop) {

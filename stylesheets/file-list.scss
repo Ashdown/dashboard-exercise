@@ -1,0 +1,18 @@
+.file-list {
+
+}
+
+@include respond-to(desktop) {
+  .file-list {
+    width: 384px;
+    float: left;
+  }
+}
+
+@include respond-to(desktop-wide) {
+  .file-list {
+    width: 384px;
+    float: left;
+  }
+}
+

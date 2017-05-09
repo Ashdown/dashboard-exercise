@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as typeActions from "../actions/typeActions";
 
-export class TypeList extends Component {
+export class TypePanel extends Component {
 
     fetchData() {
         const { dispatch } = this.props;
@@ -35,14 +35,17 @@ export class TypeList extends Component {
         let typeItems = [];
 
         for(let typeData of types) {
-            typeItems.push(<li>{typeData.name} ({typeData.count})</li>);
+            typeItems.push(<li className="type-item"><a className="type-link" href="#">{typeData.name} ({typeData.count})</a></li>);
         }
 
         return (
-            <ul className="type-list">{typeItems}</ul>
+            <div className="type-panel content-panel">
+                <h3 className="panel-title">File Types</h3>
+                <ol start="0" className="type-list">{typeItems}</ol>
+            </div>
         );
     }
 
 }
 
-export default connect(state => ({typelist: state.typelist}))(TypeList)
+export default connect(state => ({typelist: state.typelist}))(TypePanel)

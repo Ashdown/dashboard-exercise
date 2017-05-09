@@ -2,7 +2,7 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import {TypeList} from "../../../src/components/TypeList";
+import {TypePanel} from "../../../src/components/TypePanel";
 import fetchMock from 'fetch-mock';
 import * as typeActions from "../../../src/actions/typeActions";
 
@@ -18,7 +18,7 @@ describe("TypeList Component", () => {
                 }
             };
 
-            const enzymeWrapper = shallow(<TypeList {...props}/>);
+            const enzymeWrapper = shallow(<TypePanel {...props}/>);
 
             return {
                 props,
@@ -28,14 +28,14 @@ describe("TypeList Component", () => {
 
         it("should render self", () => {
             const {enzymeWrapper, props} = setup();
-            expect(enzymeWrapper.find(".type-list").hasClass("type-list")).toBe(true);
+            expect(enzymeWrapper.find(".type-panel").hasClass("type-panel")).toBe(true);
         });
     });
 
     describe('fetchData', () => {
 
         const mockDispatch = jest.fn();
-        const component = new TypeList({dispatch: mockDispatch, typelist: {}});
+        const component = new TypePanel({dispatch: mockDispatch, typelist: {}});
 
         afterEach(() => {
             fetchMock.restore();

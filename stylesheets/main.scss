@@ -19,7 +19,14 @@
   border-radius: 4px;
 }
 
+.content-panel {
+  border-top: 1px solid $deep-blue;
+  background-color: $white;
+}
+
 @import 'header';
 @import 'dashboard';
 @import 'search-bar';
 @import 'programme-information';
+@import 'file-list';
+@import 'type-panel';
