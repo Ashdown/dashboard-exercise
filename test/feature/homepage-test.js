@@ -16,4 +16,13 @@ describe("Homepage", function () {
                 done();
             });
     });
+    it("should display the page title", function(done) {
+        chai.request(app)
+            .get("/")
+            .end(function (err, res) {
+                res.text.includes("Homepage").should.equal(true);
+                done();
+            });
+
+    })
 });
