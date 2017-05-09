@@ -13,6 +13,8 @@ export class UserInformation extends Component {
 
     fetchData()  {
 
+        console.log('fetch');
+
         const { dispatch } = this.props;
         const actions = bindActionCreators(userActions, dispatch);
 
@@ -28,10 +30,13 @@ export class UserInformation extends Component {
 
                     throw Error(response.statusText);
                 }
+                console.log('response', response);
                 return response.json();
             })
             .then((data) => {
+            console.log('data', data);
                 for (let userData of data) {
+                    console.log('calling disaptch');
                     dispatch(actions.addUserData(userData));
                 }
             }).catch((error) => {
