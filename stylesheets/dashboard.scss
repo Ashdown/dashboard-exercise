@@ -1,0 +1,17 @@
+.dashboard {
+  margin: -44px auto 0 auto;
+  padding: 0 8px;
+  position: relative;
+}
+
+@include respond-to(desktop) {
+  .dashboard {
+    max-width: 592px;
+  }
+}
+
+@include respond-to(wide-desktop) {
+  .dashboard {
+    max-width: 996px;
+  }
+}

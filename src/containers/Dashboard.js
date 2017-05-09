@@ -5,6 +5,7 @@ import * as reducers from "../reducers";
 import UserInformation from "../components/UserInformation";
 import TypeList from "../components/TypeList";
 import FileList from "../components/FileList";
+import SearchBar from "../components/SearchBar";
 import {Provider} from "react-redux";
 
 const reducer = combineReducers(reducers);
@@ -18,6 +19,7 @@ export default class Dashboard extends Component {
 
         return (
             <div className="dashboard">
+                <SearchBar />
                 <h2 className="dashboard-title">Dashboard</h2>
                 <p>This is the dashboard</p>
                 <Provider store={store}>

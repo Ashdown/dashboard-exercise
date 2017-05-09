@@ -1,6 +1,6 @@
 .header {
   background-color: $deep-blue;
-  height: 44px;
+  height: 88px;
   position: relative;
   padding-left: 90px;
   overflow: hidden;
@@ -19,5 +19,11 @@
     position: absolute;
     top: 8px;
     left: 7px;
+  }
+}
+
+@include respond-to(desktop) {
+  .header {
+      height: 44px;
   }
 }

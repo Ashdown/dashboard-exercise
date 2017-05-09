@@ -12,6 +12,13 @@
     }
   }
 
+  @else if $deviceType == wide-desktop {
+    @media (min-width: 1420px) {
+      @content
+    }
+  }
+
+
 }
 
 @mixin transition($property, $duration, $type) {
