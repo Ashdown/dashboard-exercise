@@ -20,7 +20,7 @@ describe("Homepage", function () {
         chai.request(app)
             .get("/")
             .end(function (err, res) {
-                res.text.includes("Homepage").should.equal(true);
+                res.text.includes("iSite Dashboard").should.equal(true);
                 done();
             });
 

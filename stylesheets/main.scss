@@ -1,2 +1,17 @@
 @import 'variables';
 @import 'mixins';
+@import 'reset';
+
+.page {
+  background-color: $almost-white;
+  font-family: $helvetica;
+}
+
+.hidden-text {
+  text-indent: -9999px;
+  white-space: nowrap;
+  outline:none;
+  display: inline-block;
+}
+
+@import 'header';

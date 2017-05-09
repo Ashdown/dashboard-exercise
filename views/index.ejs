@@ -1,11 +1,16 @@
 <html>
 <head>
-    <title>Dashboard Exercise</title>
+    <title>iSite Dashboard</title>
     <link href="<%= static_directory %>index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="page">
-    <h1>Homepage</h1>
+    <header class="header">
+        <h1 class="page-title">iSite Dashboard</h1>
+        <a class="menu-link" href="#">
+            <span class="hidden-text">Open Menu</span>
+        </a>
+    </header>
     <div id='root'></div>
 </div>
 <script src="<%= static_directory %>index.js"></script>

@@ -1,0 +1,23 @@
+.header {
+  background-color: $deep-blue;
+  height: 44px;
+  position: relative;
+  padding-left: 90px;
+  overflow: hidden;
+
+  .page-title {
+    font-size: 16px;
+    color: $white;
+    margin-top: 15px;
+  }
+
+  .menu-link {
+    width: 51px;
+    height: 29px;
+    display: inline-block;
+    background: transparent url('/static/menu-icon.png') repeat left top;
+    position: absolute;
+    top: 8px;
+    left: 7px;
+  }
+}
