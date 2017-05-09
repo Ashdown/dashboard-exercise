@@ -31,12 +31,22 @@ export class FileList extends Component {
 
     render() {
 
-        const { filelist: { files } } = this.props;
+        const files = this.props.store.filelist.files;
+        const users = this.props.store.userlist.users;
+
 
         let fileItems = [];
+        let authorname = 'author';
 
         for(let fileData of files) {
-            fileItems.push(<li>{fileData.title} Author: {fileData.author_id}, Status: {fileData.status}</li>);
+
+            for(let userData of users) {
+                if(userData.id === fileData.author_id){
+                    authorname = userData.givenName + ' ' + userData.familyName;
+                }
+            }
+
+            fileItems.push(<li>{fileData.title} Author: {authorname}, Status: {fileData.status}</li>);
         }
 
         return (
@@ -46,4 +56,4 @@ export class FileList extends Component {
 
 }
 
-export default connect(state => ({filelist: state.filelist}))(FileList)
+export default connect(state => ({store: state}))(FileList)

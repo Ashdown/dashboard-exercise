@@ -14,8 +14,13 @@ describe("TypeList Component", () => {
         function setup() {
 
             const props = {
-                filelist: {
-                    files: []
+                store: {
+                    filelist: {
+                        files: []
+                    },
+                    userlist: {
+                        users: []
+                    }
                 }
             };
 
