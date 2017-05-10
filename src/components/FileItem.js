@@ -23,11 +23,32 @@ export default class FileItem extends Component {
 
     render() {
 
+        let iconClass;
+
+        switch(this.props.status) {
+            case 'Scheduled':
+                iconClass = 'fa fa-clock-o';
+                break;
+            case 'In progress':
+                iconClass = 'fa fa-circle-o';
+                break;
+            case 'Approved':
+                iconClass = 'fa fa-check';
+                break;
+            case 'For review':
+                iconClass = 'fa fa-picture-o';
+                break;
+            case 'Published':
+                iconClass = 'fa fa-circle';
+                break;
+
+        }
+
         return (
             <li className="file-item">
                 <h4 className="file-title">{this.props.title}</h4>
                 <p className="description">
-                    <span className="type strong">{this.props.type}</span> modified by <span className="strong">{this.props.author}</span> on <span className="strong">{this.getTimeString(this.props.date)}</span> - {this.props.status}
+                    <span className={iconClass}></span><span className="type strong">{this.props.type}</span> modified by <span className="strong">{this.props.author}</span> on <span className="strong">{this.getTimeString(this.props.date)}</span> - {this.props.status}
                 </p>
             </li>
         );
