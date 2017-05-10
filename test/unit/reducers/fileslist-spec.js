@@ -41,7 +41,8 @@ describe("userlist reducer", () => {
                 author_id: 8,
                 date_modified: "2015-02-04T22:42:25.086Z",
                 status: "Approved",
-                title: "Pelwefura acalase."
+                title: "Pelwefura acalase.",
+                type: "article"
             }]
         });
     });

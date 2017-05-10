@@ -1,0 +1,19 @@
+.file-item {
+
+  border-bottom: 1px solid $light-grey;
+  padding-bottom: 14px;
+
+  .file-title {
+    font-size: 16px;
+    margin-top: 12px;
+    color: $text-blue;
+    font-weight: bold;
+  }
+  .description {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+  .type {
+    text-transform: capitalize;
+  }
+}

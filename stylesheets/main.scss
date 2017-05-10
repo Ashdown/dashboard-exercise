@@ -37,6 +37,10 @@
   }
 }
 
+.strong {
+  font-weight: bold;
+}
+
 @import 'header';
 @import 'dashboard';
 @import 'search-bar';
@@ -44,3 +48,4 @@
 @import 'file-panel';
 @import 'type-panel';
 @import 'content-filters';
+@import 'file-item';

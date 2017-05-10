@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as fileActions from "../actions/fileActions";
 import ContentFilters from "./ContentFilters";
+import FileItem from "./FileItem";
 
 export class FilePanel extends Component {
 
@@ -37,7 +38,7 @@ export class FilePanel extends Component {
 
 
         let fileItems = [];
-        let authorname = 'author';
+        let authorname = 'unknown';
 
         for(let fileData of files) {
 
@@ -46,8 +47,8 @@ export class FilePanel extends Component {
                     authorname = userData.givenName + ' ' + userData.familyName;
                 }
             }
+            fileItems.push(<FileItem title={fileData.title} author={authorname} status={fileData.status} date={fileData.date_modified} type={fileData.type}/>);
 
-            fileItems.push(<li>{fileData.title} Author: {authorname}, Status: {fileData.status}</li>);
         }
 
         return (
@@ -55,8 +56,8 @@ export class FilePanel extends Component {
                 <h3 className="content-title">Latest Content</h3>
                 <div className="content-panel">
                     <ContentFilters/>
-
                     <ul className="file-list">{fileItems}</ul>
+                    <a className="curved view-more-button" href="#">View all content</a>
                 </div>
             </div>
         );

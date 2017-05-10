@@ -27,7 +27,8 @@ export default function filelist(state = initialState, action) {
                         author_id: action.data.modifiedBy,
                         date_modified: action.data.modifiedDateTime,
                         status: action.data.status,
-                        title: action.data.title
+                        title: action.data.title,
+                        type: action.data.type
 
                     }
                 ]
