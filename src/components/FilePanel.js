@@ -7,6 +7,13 @@ import FileItem from "./FileItem";
 
 export class FilePanel extends Component {
 
+    showMore = (event) => {
+        event.preventDefault();
+        this.setState({
+            showAll: true
+        })
+    }
+
     fetchData() {
         const { dispatch } = this.props;
         const actions = bindActionCreators(fileActions, dispatch);
@@ -25,6 +32,13 @@ export class FilePanel extends Component {
             }).catch((error) => {
             console.log('error', error);
         });
+    }
+
+    constructor () {
+        super();
+        this.state = {
+            showAll: false
+        };
     }
 
     componentDidMount() {
@@ -56,8 +70,8 @@ export class FilePanel extends Component {
                 <h3 className="content-title">Latest Content</h3>
                 <div className="content-panel">
                     <ContentFilters/>
-                    <ul className="file-list">{fileItems}</ul>
-                    <a className="curved view-more-button" href="#">View all content</a>
+                    <ul className={"file-list " +  (this.state.showAll? "show-all" : "hide-some")}>{fileItems}</ul>
+                    <a className={"curved view-more-button " +  (this.state.showAll? "hidden" : "show")} onClick={this.showMore} href="#">View all content</a>
                 </div>
             </div>
         );
