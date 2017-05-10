@@ -2,12 +2,12 @@
 
 import React from "react";
 import {shallow} from "enzyme";
-import { FileList } from "../../../src/components/FileList";
+import { FilePanel } from "../../../src/components/FilePanel";
 import fetchMock from 'fetch-mock';
 import * as fileActions from "../../../src/actions/fileActions";
 
 
-describe("TypeList Component", () => {
+describe("TypePanel Component", () => {
 
     describe('render', () => {
 
@@ -24,7 +24,7 @@ describe("TypeList Component", () => {
                 }
             };
 
-            const enzymeWrapper = shallow(<FileList {...props}/>);
+            const enzymeWrapper = shallow(<FilePanel {...props}/>);
 
             return {
                 props,
@@ -34,13 +34,13 @@ describe("TypeList Component", () => {
 
         it("should render self", () => {
             const { enzymeWrapper, props } = setup();
-            expect(enzymeWrapper.find(".file-list").hasClass("file-list")).toBe(true);
+            expect(enzymeWrapper.find(".file-panel").hasClass("file-panel")).toBe(true);
         });
     });
 
     describe('fetchData', () => {
         const mockDispatch = jest.fn();
-        const component = new FileList({dispatch: mockDispatch, filelist: {}});
+        const component = new FilePanel({dispatch: mockDispatch, filelist: {}});
 
         afterEach(() => {
             fetchMock.restore();

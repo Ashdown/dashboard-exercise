@@ -1,5 +1,7 @@
 .type-panel {
 
+  margin-top: 24px;
+
   .panel-title,
   .type-item {
     padding: 0 12px;
@@ -26,12 +28,7 @@
   .type-link {
     padding: 6px 0 4px 0;
     display: inline-block;
-    color: $text-blue;
-    text-decoration: none;
-    @include transition(color, 0.2s, ease);
-    &:hover {
-      color: $deep-blue;
-    }
+
   }
 
 }
@@ -39,12 +36,6 @@
 @include respond-to(desktop) {
   .type-panel {
     overflow: hidden;
-    margin-left: 16px;
-  }
-}
-
-@include respond-to(desktop-wide) {
-  .type-panel {
-    margin-left: 40px;
+    margin-top: 8px;
   }
 }

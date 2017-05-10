@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as fileActions from "../actions/fileActions";
+import ContentFilters from "./ContentFilters";
 
-export class FileList extends Component {
+export class FilePanel extends Component {
 
     fetchData() {
         const { dispatch } = this.props;
@@ -50,10 +51,17 @@ export class FileList extends Component {
         }
 
         return (
-            <ul className="file-list">{fileItems}</ul>
+            <div className="file-panel">
+                <h3 className="content-title">Latest Content</h3>
+                <div className="content-panel">
+                    <ContentFilters/>
+
+                    <ul className="file-list">{fileItems}</ul>
+                </div>
+            </div>
         );
     }
 
 }
 
-export default connect(state => ({store: state}))(FileList)
+export default connect(state => ({store: state}))(FilePanel)

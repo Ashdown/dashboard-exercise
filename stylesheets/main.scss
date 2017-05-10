@@ -24,9 +24,23 @@
   background-color: $white;
 }
 
+.blue-link {
+  color: $text-blue;
+  text-decoration: none;
+  @include transition(color, 0.2s, ease);
+  &.selected {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  &:hover {
+    color: $deep-blue;
+  }
+}
+
 @import 'header';
 @import 'dashboard';
 @import 'search-bar';
 @import 'programme-information';
-@import 'file-list';
+@import 'file-panel';
 @import 'type-panel';
+@import 'content-filters';

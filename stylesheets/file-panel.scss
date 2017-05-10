@@ -1,0 +1,40 @@
+.file-panel {
+
+  .content-title {
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  .content-panel {
+    margin-top: 16px;
+    padding: 0 14px;
+  }
+
+}
+
+@include respond-to(tablet) {
+  .file-panel {
+    .conent-title {
+      margin-top: 40px;
+    }
+  }
+}
+
+@include respond-to(desktop) {
+  .file-panel {
+    width: 384px;
+    float: left;
+    margin-right: 16px;
+
+  }
+}
+
+@include respond-to(wide-desktop) {
+  .file-panel {
+    width: 626px;
+    float: left;
+    margin-right: 40px;
+  }
+}
+
+

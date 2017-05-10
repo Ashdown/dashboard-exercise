@@ -3,8 +3,8 @@ import {combineReducers} from "redux";
 import {createStore, renderDevTools} from "../store_enhancers/devTools";
 import * as reducers from "../reducers";
 import ProgrammeInformation from "../components/ProgrammeInformation";
-import TypeList from "../components/TypePanel";
-import FileList from "../components/FileList";
+import TypePanel from "../components/TypePanel";
+import FileList from "../components/FilePanel";
 import SearchBar from "../components/SearchBar";
 import {Provider} from "react-redux";
 
@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
                         {() => <FileList />}
                     </Provider>
                     <Provider store={store}>
-                        {() => <TypeList />}
+                        {() => <TypePanel />}
                     </Provider>
                 </div>
                 {renderDevTools(store)}
