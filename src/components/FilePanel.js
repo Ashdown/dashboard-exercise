@@ -11,8 +11,8 @@ export class FilePanel extends Component {
         event.preventDefault();
         this.setState({
             showAll: true
-        })
-    }
+        });
+    };
 
     fetchData() {
         const { dispatch } = this.props;
@@ -34,8 +34,8 @@ export class FilePanel extends Component {
         });
     }
 
-    constructor () {
-        super();
+    constructor (options) {
+        super(options);
         this.state = {
             showAll: false
         };
