@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as fileActions from "../actions/fileActions";
 import ContentFilters from "./ContentFilters";
 import FileItem from "./FileItem";
@@ -16,7 +15,6 @@ export class FilePanel extends Component {
 
     fetchData() {
         const { dispatch } = this.props;
-        const actions = bindActionCreators(fileActions, dispatch);
 
         return fetch("http://localhost:3001/files")
             .then((response) => {
@@ -27,7 +25,7 @@ export class FilePanel extends Component {
             })
             .then((data) => {
                 for (let fileData of data) {
-                    dispatch(actions.addFileData(fileData));
+                    dispatch(fileActions.addFileData(fileData));
                 }
             }).catch((error) => {
             console.log('error', error);

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as userActions from "../actions/userActions";
 
 export class ProgrammeInformation extends Component {
@@ -13,7 +12,6 @@ export class ProgrammeInformation extends Component {
     fetchData()  {
 
         const { dispatch } = this.props;
-        const actions = bindActionCreators(userActions, dispatch);
 
         return fetch("http://localhost:3001/users")
             .then((response) => {
@@ -30,7 +28,7 @@ export class ProgrammeInformation extends Component {
             })
             .then((data) => {
                 for (let userData of data) {
-                    dispatch(actions.addUserData(userData));
+                    dispatch(userActions.addUserData(userData));
                 }
 
             }).catch((error) => {

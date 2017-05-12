@@ -1,13 +1,11 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as typeActions from "../actions/typeActions";
 
 export class TypePanel extends Component {
 
     fetchData() {
         const { dispatch } = this.props;
-        const actions = bindActionCreators(typeActions, dispatch);
 
         return fetch("http://localhost:3001/types")
             .then((response) => {
@@ -18,8 +16,7 @@ export class TypePanel extends Component {
             })
             .then((data) => {
                 for (let typeData of data) {
-                    console.log('id', typeData.id);
-                    dispatch(actions.addTypeData(typeData));
+                    dispatch(typeActions.addTypeData(typeData));
                 }
             }).catch((error) => {
             console.log('error', error);
