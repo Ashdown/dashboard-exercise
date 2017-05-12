@@ -49,11 +49,24 @@ describe("userlist reducer", () => {
 
     it("should add the correct number of files", () => {
 
-        expect(
-            reducer(undefined, {
-                type: types.ADD_FILE_DATA,
-                data: sampleData
-            })["files"].length).toBe(1)
+        let nextData = sampleData;
+        let currentState = undefined;
+
+        currentState = reducer(currentState, {
+            type: types.ADD_FILE_DATA,
+            data: nextData
+        });
+
+        expect(currentState["files"].length).toBe(1);
+
+        nextData = Object.assign({}, sampleData).id = '2';
+        currentState = reducer(currentState, {
+            type: types.ADD_FILE_DATA,
+            data: nextData
+        });
+
+        expect(currentState["files"].length).toBe(2);
+
 
     })
 

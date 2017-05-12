@@ -35,11 +35,23 @@ describe("userlist reducer", () => {
 
     it("should add the correct number of users", () => {
 
-        expect(
-            reducer(undefined, {
-                type: types.ADD_USER_DATA,
-                data: sampleData
-            })["users"].length).toBe(1)
+        let nextData = sampleData;
+        let currentState = undefined;
+
+        currentState = reducer(currentState, {
+            type: types.ADD_USER_DATA,
+            data: nextData
+        });
+
+        expect(currentState["users"].length).toBe(1);
+
+        nextData = Object.assign({}, sampleData).id = '2';
+        currentState = reducer(currentState, {
+            type: types.ADD_USER_DATA,
+            data: nextData
+        });
+
+        expect(currentState["users"].length).toBe(2);
 
     })
 

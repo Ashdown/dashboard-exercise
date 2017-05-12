@@ -38,11 +38,23 @@ describe("typelist reducer", () => {
 
     it("should add the correct number of types", () => {
 
-        expect(
-            reducer(undefined, {
-                type: types.ADD_TYPE_DATA,
-                data: sampleData
-            })["types"].length).toBe(1)
+        let nextData = sampleData;
+        let currentState = undefined;
+
+        currentState = reducer(currentState, {
+            type: types.ADD_TYPE_DATA,
+            data: nextData
+        });
+
+        expect(currentState["types"].length).toBe(1);
+
+        nextData = Object.assign({}, sampleData).id = 'feature';
+        currentState = reducer(currentState, {
+            type: types.ADD_TYPE_DATA,
+            data: nextData
+        });
+
+        expect(currentState["types"].length).toBe(2);
 
     })
 

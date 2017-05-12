@@ -29,7 +29,6 @@ export default function filelist(state = initialState, action) {
                         status: action.data.status,
                         title: action.data.title,
                         type: action.data.type
-
                     }
                 ]
             };
