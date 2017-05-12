@@ -61,7 +61,7 @@ export class FilePanel extends Component {
                     authorname = userData.givenName + ' ' + userData.familyName;
                 }
             }
-            fileItems.push(<FileItem title={fileData.title} author={authorname} status={fileData.status} date={fileData.date_modified} type={fileData.type}/>);
+            fileItems.push(<FileItem key={fileData.id} title={fileData.title} author={authorname} status={fileData.status} date={fileData.date_modified} type={fileData.type}/>);
 
         }
 

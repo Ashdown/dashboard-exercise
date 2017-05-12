@@ -18,6 +18,7 @@ export class TypePanel extends Component {
             })
             .then((data) => {
                 for (let typeData of data) {
+                    console.log('id', typeData.id);
                     dispatch(actions.addTypeData(typeData));
                 }
             }).catch((error) => {
@@ -35,7 +36,8 @@ export class TypePanel extends Component {
         let typeItems = [];
 
         for(let typeData of types) {
-            typeItems.push(<li className="type-item"><a className="type-link blue-link" href="#">{typeData.name} ({typeData.count})</a></li>);
+
+            typeItems.push(<li className="type-item" key={typeData.id}><a className="type-link blue-link" href="#">{typeData.name} ({typeData.count})</a></li>);
         }
 
         return (
