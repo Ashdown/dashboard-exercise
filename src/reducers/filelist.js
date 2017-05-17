@@ -28,9 +28,29 @@ export default function filelist(state = initialState, action) {
                         date_modified: action.data.modifiedDateTime,
                         status: action.data.status,
                         title: action.data.title,
-                        type: action.data.type
+                        type: action.data.type,
+                        visibility: true
                     }
                 ]
+            };
+
+        case types.FILTER_BY_STATUS:
+
+            return {
+                files: state.files.map(function(file) {
+
+                    if(action.status === 'all' || file.status === action.status) {
+                        return {
+                            ...file,
+                            visibility: true
+                        }
+                    } else {
+                        return {
+                            ...file,
+                            visibility: false
+                        }
+                    }
+                })
             };
 
         default:

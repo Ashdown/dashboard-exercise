@@ -6,3 +6,10 @@ export function addFileData(data) {
         data
     };
 }
+
+export function filterByStatus(status) {
+    return {
+        type: types.FILTER_BY_STATUS,
+        status
+    };
+}

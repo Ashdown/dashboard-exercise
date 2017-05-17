@@ -5,11 +5,13 @@ import {mount} from "enzyme";
 import ContentFilters from "../../../src/components/ContentFilters";
 
 
-describe("FileItem Component", () => {
+describe("ContentFilters Component", () => {
 
     function setup() {
 
-        const props = {};
+        const props = {
+            filter: jest.fn()
+        };
 
         const enzymeWrapper = mount(<ContentFilters {...props}/>);
 
@@ -22,11 +24,10 @@ describe("FileItem Component", () => {
     describe('render', () => {
 
         it("should render self and subcomponents", () => {
-            const { enzymeWrapper, props } = setup();
+            const { enzymeWrapper } = setup();
             expect(enzymeWrapper.find(".content-filters").hasClass("content-filters")).toBe(true);
             expect(enzymeWrapper.find('FilterItem').length).toBe(3);
         });
-
 
     });
 
@@ -35,8 +36,7 @@ describe("FileItem Component", () => {
         it('selectItem should update state.selectedFilter', () => {
             const { enzymeWrapper, props } = setup();
             expect(enzymeWrapper.state.selectedFilter = 'my-content');
-            // const itemProps = enzymeWrapper.first('FilterItem').props();
-            const filters = enzymeWrapper.find('FilterItem')
+            const filters = enzymeWrapper.find('FilterItem');
 
             expect(filters.get(0).props.isSelected).toBe(true);
             expect(filters.get(1).props.isSelected).toBe(false);
@@ -44,7 +44,7 @@ describe("FileItem Component", () => {
             enzymeWrapper.instance().selectItem('filter-item');
             enzymeWrapper.update();
             expect(filters.get(0).props.isSelected).toBe(false);
-            // expect(filters.get(1).props.isSelected).toBe(true);
+            expect(props.filter.mock.calls.length).toBe(1)
 
         });
     });

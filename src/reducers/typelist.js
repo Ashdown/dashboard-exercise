@@ -25,8 +25,7 @@ export default function typelist(state = initialState, action) {
                     {
                         id: action.data.id,
                         count: action.data.documentsCount,
-                        name: action.data.name,
-
+                        name: action.data.name
                     }
                 ]
             };

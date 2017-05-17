@@ -13,6 +13,15 @@ export class FilePanel extends Component {
         });
     };
 
+    filter = (options) => {
+
+        const { dispatch } = this.props;
+
+        if(options.status !== undefined) {
+            dispatch(fileActions.filterByStatus(options.status));
+        }
+    };
+
     fetchData() {
         const { dispatch } = this.props;
 
@@ -48,7 +57,6 @@ export class FilePanel extends Component {
         const files = this.props.store.filelist.files;
         const users = this.props.store.userlist.users;
 
-
         let fileItems = [];
         let authorname = 'unknown';
 
@@ -59,7 +67,10 @@ export class FilePanel extends Component {
                     authorname = userData.givenName + ' ' + userData.familyName;
                 }
             }
-            fileItems.push(<FileItem key={fileData.id} title={fileData.title} author={authorname} status={fileData.status} date={fileData.date_modified} type={fileData.type}/>);
+            if(fileData.visibility) {
+                fileItems.push(<FileItem key={fileData.id} title={fileData.title} author={authorname}
+                                         status={fileData.status} date={fileData.date_modified} type={fileData.type}/>);
+            }
 
         }
 
@@ -67,7 +78,7 @@ export class FilePanel extends Component {
             <div className="file-panel">
                 <h3 className="content-title">Latest Content</h3>
                 <div className="content-panel">
-                    <ContentFilters/>
+                    <ContentFilters filter={this.filter}/>
                     <ul className={"file-list " +  (this.state.showAll? "show-all" : "hide-some")}>{fileItems}</ul>
                     <a className={"curved view-more-button " +  (this.state.showAll? "hidden" : "show")} onClick={this.showMore} href="#">View all content</a>
                 </div>
