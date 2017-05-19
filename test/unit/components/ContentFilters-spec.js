@@ -33,7 +33,7 @@ describe("ContentFilters Component", () => {
 
     describe('selectItem', () => {
 
-        it('selectItem should update state.selectedFilter', () => {
+        it('should update state.selectedFilter', () => {
             const { enzymeWrapper, props } = setup();
             expect(enzymeWrapper.state.selectedFilter = 'my-content');
             const filters = enzymeWrapper.find('FilterItem');

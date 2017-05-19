@@ -37,7 +37,7 @@ export default class ContentFilters extends Component {
         this.setState({
           selectedFilter: itemKey
         });
-    }
+    };
 
     render() {
 
